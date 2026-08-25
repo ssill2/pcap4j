@@ -10,6 +10,11 @@
   <name>Pcap4J</name>
   <description>A Java library for capturing, crafting and sending packets.</description>
   <url>https://github.com/kaitoy/pcap4j</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.release>25</java.release>
+  </properties>
 
   <licenses>
     <license>
@@ -98,22 +103,22 @@
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
-        <version>1.0.0</version>
+        <version>1.6.2</version>
       </dependency>
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-core</artifactId>
-        <version>1.0.0</version>
+        <version>1.6.2</version>
       </dependency>
       <dependency>
         <groupId>net.java.dev.jna</groupId>
         <artifactId>jna</artifactId>
-        <version>5.3.1</version>
+        <version>5.19.1</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.26</version>
+        <version>1.7.36</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -124,7 +129,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-toolchains-plugin</artifactId>
-          <version>1.1</version>
+          <version>3.3.0</version>
           <executions>
             <execution>
               <goals>
@@ -135,7 +140,7 @@
           <configuration>
             <toolchains>
               <jdk>
-                <version>[9,12)</version>
+                <version>[9,25]</version>
               </jdk>
             </toolchains>
           </configuration>
@@ -143,22 +148,21 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
+          <version>3.15.0</version>
           <configuration>
             <encoding>UTF-8</encoding>
-            <source>6</source>
-            <target>6</target>
+            <release>${java.release}</release>
           </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.4.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.12.0</version>
           <configuration>
             <encoding>UTF-8</encoding>
             <charset>UTF-8</charset>
@@ -168,14 +172,14 @@
             <windowtitle>${project.name} ${project.version}</windowtitle>
             <bottom>Copyright &amp;#169; 2011&amp;#x2013;{currentYear} Pcap4J.org. All rights reserved.</bottom>
             <show>protected</show>
-            <source>8</source>
+            <source>${java.release}</source>
             <doclint>all,-reference</doclint>
           </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.5.0</version>
           <configuration>
             <encoding>UTF-8</encoding>
             <nonFilteredFileExtensions>
@@ -186,17 +190,17 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>3.0.0-M1</version>
+          <version>3.1.4</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.5.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.2</version>
+          <version>3.5.6</version>
           <configuration>
             <encoding>UTF-8</encoding>
             <argLine>-Dfile.encoding=UTF-8</argLine>
@@ -205,56 +209,32 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.8.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.11.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
-        <plugin>
-          <groupId>org.eclipse.m2e</groupId>
-          <artifactId>lifecycle-mapping</artifactId>
-          <version>1.0.0</version>
-          <configuration>
-            <lifecycleMappingMetadata>
-              <pluginExecutions>
-                <pluginExecution>
-                  <pluginExecutionFilter>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <versionRange>[1.0.0,)</versionRange>
-                    <goals>
-                      <goal>unpack-dependencies</goal>
-                    </goals>
-                  </pluginExecutionFilter>
-                  <action>
-                    <ignore />
-                  </action>
-                </pluginExecution>
-              </pluginExecutions>
-            </lifecycleMappingMetadata>
-          </configuration>
+          <version>3.5.0</version>
         </plugin>
         <plugin>
           <groupId>org.eluder.coveralls</groupId>
           <artifactId>coveralls-maven-plugin</artifactId>
-          <version>4.2.0</version>
+          <version>4.3.0</version>
         </plugin>
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.3</version>
+          <version>0.8.15</version>
         </plugin>
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.6</version>
+          <version>1.7.0</version>
           <extensions>true</extensions>
           <configuration>
             <serverId>ossrh</serverId>
@@ -265,12 +245,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.6</version>
+          <version>3.2.8</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.3</version>
+          <version>3.3.1</version>
           <configuration>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <useReleaseProfile>false</useReleaseProfile>
@@ -281,7 +261,7 @@
         <plugin>
           <groupId>com.coveo</groupId>
           <artifactId>fmt-maven-plugin</artifactId>
-          <version>2.8</version>
+          <version>2.13</version>
           <executions>
             <execution>
               <goals>
@@ -293,7 +273,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
-          <version>1.8</version>
+          <version>3.2.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -311,7 +291,7 @@
             <id>default-compile</id>
             <configuration>
               <!-- compile everything to ensure module-info contains right entries -->
-              <release>9</release>
+              <release>${java.release}</release>
             </configuration>
           </execution>
           <execution>
@@ -329,18 +309,13 @@
           <execution>
             <id>default-testCompile</id>
             <configuration>
-              <release>9</release>
+              <release>${java.release}</release>
             </configuration>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
 
   <profiles>
     <profile>

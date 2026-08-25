@@ -71,10 +71,10 @@
     </profile>
 
     <profile>
-      <id>jre6-test</id>
+      <id>jre25-test</id>
       <activation>
         <property>
-          <name>org.pcap4j.jre6-test.jvm</name>
+          <name>org.pcap4j.jre25-test.jvm</name>
         </property>
       </activation>
       <build>
@@ -84,7 +84,7 @@
             <artifactId>maven-antrun-plugin</artifactId>
             <executions>
               <execution>
-                <id>jre6-test</id>
+                <id>jre25-test</id>
                 <phase>verify</phase>
                 <goals>
                   <goal>run</goal>
@@ -92,7 +92,7 @@
                 <configuration>
                   <target>
                     <delete>
-                      <!-- Remove module-info.class for maven-surefire-plugin to run JRE 6 tests with class paths rather than module paths. -->
+                      <!-- Remove module-info.class for maven-surefire-plugin to run JRE 25 tests with class paths rather than module paths. -->
                       <fileset dir="${project.build.outputDirectory}" includes="**/module-info.class" />
                     </delete>
                   </target>
@@ -105,13 +105,13 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <executions>
               <execution>
-                <id>jre6-test</id>
+                <id>jre25-test</id>
                 <phase>verify</phase>
                 <goals>
                   <goal>testCompile</goal>
                 </goals>
                 <configuration>
-                  <release>6</release>
+                  <release>${java.release}</release>
                 </configuration>
               </execution>
             </executions>
@@ -121,13 +121,13 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <executions>
               <execution>
-                <id>jre6-test</id>
+                <id>jre25-test</id>
                 <phase>verify</phase>
                 <goals>
                   <goal>test</goal>
                 </goals>
                 <configuration>
-                  <jvm>${org.pcap4j.jre6-test.jvm}</jvm>
+                  <jvm>${org.pcap4j.jre25-test.jvm}</jvm>
                 </configuration>
               </execution>
             </executions>
