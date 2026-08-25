@@ -6,14 +6,14 @@
 */
 package org.pcap4j.test.packet;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.pcap4j.packet.IllegalRawDataException;
 import org.pcap4j.packet.Packet;
 import org.pcap4j.packet.RadiotapDataAMpduStatus;
@@ -302,12 +302,12 @@ public class RadiotapPacketTest extends AbstractPacketTest {
     return DataLinkType.IEEE802_11_RADIO;
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {
     logger.info("########## " + RadiotapPacketTest.class.getSimpleName() + " START ##########");
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownAfterClass() throws Exception {}
 
   @Test

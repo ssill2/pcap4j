@@ -1,22 +1,17 @@
 package org.pcap4j.core;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.pcap4j.core.PcapHandle.PcapDirection;
 import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
 import org.pcap4j.packet.Packet;
@@ -29,18 +24,18 @@ public class PcapHandleTest {
 
   private PcapHandle ph;
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {}
 
-  @AfterClass
+  @AfterAll
   public static void tearDownAfterClass() throws Exception {}
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     ph = Pcaps.openOffline("src/test/resources/org/pcap4j/core/PcapHandleTest.pcap");
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     if (ph != null) {
       ph.close();
@@ -69,8 +64,9 @@ public class PcapHandleTest {
         assertNotNull(ps);
       } catch (PcapNativeException e) {
         assertTrue(
-            "The exception should complain about permission to capture.",
-            e.getMessage().contains("You don't have permission to capture on that device"));
+                e.getMessage().contains("You don't have permission to capture on that device"),
+            "The exception should complain about permission to capture."
+            );
       }
     }
   }

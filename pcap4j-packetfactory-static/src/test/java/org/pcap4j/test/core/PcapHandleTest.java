@@ -1,13 +1,11 @@
 package org.pcap4j.test.core;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.EOFException;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
 import org.pcap4j.core.BpfProgram;
 import org.pcap4j.core.BpfProgram.BpfCompileMode;
 import org.pcap4j.core.PacketListener;

@@ -1,8 +1,9 @@
 package org.pcap4j.test.packet;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -12,9 +13,6 @@ import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Timestamp;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.pcap4j.core.PcapDumper;
 import org.pcap4j.core.PcapHandle;
 import org.pcap4j.core.Pcaps;
@@ -119,13 +117,13 @@ public class IpV6ExtFragmentPacketTest extends AbstractPacketTest {
     throw new UnsupportedOperationException();
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {
     logger.info(
         "########## " + IpV6ExtFragmentPacketTest.class.getSimpleName() + " START ##########");
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownAfterClass() throws Exception {}
 
   @Test

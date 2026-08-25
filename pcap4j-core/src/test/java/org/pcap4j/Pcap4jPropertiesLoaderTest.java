@@ -1,18 +1,16 @@
 package org.pcap4j;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import com.sun.jna.Platform;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("javadoc")
 public class Pcap4jPropertiesLoaderTest {
 
   private Pcap4jPropertiesLoader propertiesLoader;
 
-  @Before
+  @BeforeEach
   public void setUp() {
     this.propertiesLoader = Pcap4jPropertiesLoader.getInstance();
   }

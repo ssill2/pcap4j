@@ -1,13 +1,12 @@
 package org.pcap4j.core;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.pcap4j.core.PcapNetworkInterface.PromiscuousMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,16 +16,16 @@ public class PcapNetworkInterfaceTest {
 
   private static final Logger logger = LoggerFactory.getLogger(PcapNetworkInterfaceTest.class);
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {}
 
-  @AfterClass
+  @AfterAll
   public static void tearDownAfterClass() throws Exception {}
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {}
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {}
 
   @Test
@@ -38,8 +37,8 @@ public class PcapNetworkInterfaceTest {
       return;
     } catch (PcapNativeException e) {
       assertTrue(
-          "The exception should complain about permission to capture.",
-          e.getMessage().contains("You don't have permission to capture on that device"));
+          e.getMessage().contains("You don't have permission to capture on that device"),
+              "The exception should complain about permission to capture.");
       return;
     }
 

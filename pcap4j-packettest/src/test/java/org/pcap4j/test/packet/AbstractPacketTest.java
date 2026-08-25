@@ -1,8 +1,9 @@
 package org.pcap4j.test.packet;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,9 +15,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.sql.Timestamp;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.pcap4j.core.PcapDumper;
 import org.pcap4j.core.PcapHandle;
 import org.pcap4j.core.Pcaps;
@@ -38,7 +36,7 @@ public abstract class AbstractPacketTest {
   protected String resourceDirPath;
   protected String tmpDirPath;
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     originalLineSeparator = System.setProperty("line.separator", "\r\n");
     resourceDirPath = System.getProperty(RESOURCE_DIR_PROP, "src/test/resources");
@@ -52,7 +50,7 @@ public abstract class AbstractPacketTest {
     }
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     System.setProperty("line.separator", originalLineSeparator);
     logger.info("==================================================");

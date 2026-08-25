@@ -1,8 +1,8 @@
 package org.pcap4j.core;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
 import org.pcap4j.core.BpfProgram.BpfCompileMode;
 import org.pcap4j.packet.Packet;
 

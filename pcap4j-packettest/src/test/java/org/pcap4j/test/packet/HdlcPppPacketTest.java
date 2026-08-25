@@ -6,14 +6,13 @@
 */
 package org.pcap4j.test.packet;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.pcap4j.packet.HdlcPppPacket;
 import org.pcap4j.packet.HdlcPppPacket.HdlcPppHeader;
 import org.pcap4j.packet.IcmpV4CommonPacket;
@@ -109,12 +108,12 @@ public class HdlcPppPacketTest extends AbstractPacketTest {
     return packet;
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {
     logger.info("########## " + HdlcPppPacketTest.class.getSimpleName() + " START ##########");
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownAfterClass() throws Exception {}
 
   @Test

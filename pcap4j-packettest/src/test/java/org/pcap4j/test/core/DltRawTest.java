@@ -1,8 +1,9 @@
 package org.pcap4j.test.core;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,9 +16,6 @@ import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.sql.Timestamp;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.pcap4j.core.PcapDumper;
 import org.pcap4j.core.PcapHandle;
 import org.pcap4j.core.Pcaps;
@@ -52,7 +50,7 @@ public class DltRawTest {
   private final Packet ipV4 = newIpV4Packet();
   private final Packet ipV6 = newIpV6Packet();
 
-  @Before
+  @BeforeEach
   public void setUp() throws Exception {
     originalLineSeparator = System.setProperty("line.separator", "\r\n");
     resourceDirPath =
@@ -67,7 +65,7 @@ public class DltRawTest {
     }
   }
 
-  @After
+  @AfterEach
   public void tearDown() throws Exception {
     System.setProperty("line.separator", originalLineSeparator);
   }

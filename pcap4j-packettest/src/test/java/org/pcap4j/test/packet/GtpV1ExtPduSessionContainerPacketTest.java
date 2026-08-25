@@ -1,14 +1,12 @@
 package org.pcap4j.test.packet;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.net.Inet6Address;
 import java.net.InetAddress;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import org.pcap4j.packet.EthernetPacket;
 import org.pcap4j.packet.GtpV1ExtPduSessionContainerPacket;
 import org.pcap4j.packet.GtpV1ExtPduSessionContainerPacket.GtpV1ExtPduSessionContainerHeader;
@@ -144,7 +142,7 @@ public class GtpV1ExtPduSessionContainerPacketTest extends AbstractPacketTest {
     return eb.build();
   }
 
-  @BeforeClass
+  @BeforeAll
   public static void setUpBeforeClass() throws Exception {
     logger.info(
         "########## "
@@ -152,7 +150,7 @@ public class GtpV1ExtPduSessionContainerPacketTest extends AbstractPacketTest {
             + " START ##########");
   }
 
-  @AfterClass
+  @AfterAll
   public static void tearDownAfterClass() throws Exception {}
 
   @Test
