@@ -2,19 +2,19 @@
 <!-- Copyright (C) 2011 Pcap4J.org -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>pcap4j-packetfactory-propertiesbased</artifactId>
-  <packaging>jar</packaging>
-  <name>Pcap4J Properties-Based Packet Factory</name>
-  <description>Properties-based implementations of Pcap4J packet factory.</description>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>pcap4j-packetfactory-propertiesbased</artifactId>
+    <packaging>jar</packaging>
+    <name>Pcap4J Properties-Based Packet Factory</name>
+    <description>Properties-based implementations of Pcap4J packet factory.</description>
 
-  <parent>
-    <groupId>org.pcap4j</groupId>
-    <artifactId>pcap4j</artifactId>
-    <version>1.8.3-SNAPSHOT</version>
-  </parent>
+    <parent>
+        <groupId>org.pcap4j</groupId>
+        <artifactId>pcap4j</artifactId>
+        <version>1.8.3-1</version>
+    </parent>
 
-  <dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -30,112 +30,65 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <scope>test</scope>
         </dependency>
-    <dependency>
-      <groupId>org.pcap4j</groupId>
-      <artifactId>pcap4j-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.pcap4j</groupId>
-      <artifactId>pcap4j-packettest</artifactId>
-      <scope>test</scope>
-      <type>test-jar</type>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-classic</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+        <dependency>
+            <groupId>org.pcap4j</groupId>
+            <artifactId>pcap4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.pcap4j</groupId>
+            <artifactId>pcap4j-packettest</artifactId>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>unpack-dependencies</id>
-            <phase>process-test-classes</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <includeArtifactIds>pcap4j-packettest</includeArtifactIds>
-              <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <argLine>${argLine}</argLine>
-          <systemPropertyVariables>
-            <org.pcap4j.test.packet.AbstractPacketTest.resourceDir>
-              target/test-classes
-            </org.pcap4j.test.packet.AbstractPacketTest.resourceDir>
-            <org.pcap4j.test.packet.AbstractPacketTest.tmpDir>
-              target/test
-            </org.pcap4j.test.packet.AbstractPacketTest.tmpDir>
-            <org.pcap4j.core.PcapDumperTest.tmpDir>
-              target/test
-            </org.pcap4j.core.PcapDumperTest.tmpDir>
-          </systemPropertyVariables>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
-  <profiles>
-    <profile>
-      <id>jre25-test</id>
-      <activation>
-        <property>
-          <name>org.pcap4j.jre25-test.jvm</name>
-        </property>
-      </activation>
-      <build>
+    <build>
         <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>jre25-test</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>testCompile</goal>
-                </goals>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-dependencies</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeArtifactIds>pcap4j-packettest</includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                  <release>${java.release}</release>
+                    <argLine>${argLine}</argLine>
+                    <systemPropertyVariables>
+                        <org.pcap4j.test.packet.AbstractPacketTest.resourceDir>
+                            target/test-classes
+                        </org.pcap4j.test.packet.AbstractPacketTest.resourceDir>
+                        <org.pcap4j.test.packet.AbstractPacketTest.tmpDir>
+                            target/test
+                        </org.pcap4j.test.packet.AbstractPacketTest.tmpDir>
+                        <org.pcap4j.core.PcapDumperTest.tmpDir>
+                            target/test
+                        </org.pcap4j.core.PcapDumperTest.tmpDir>
+                    </systemPropertyVariables>
                 </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>jre25-test</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>test</goal>
-                </goals>
-                <configuration>
-                  <jvm>${org.pcap4j.jre25-test.jvm}</jvm>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
+            </plugin>
         </plugins>
-      </build>
-    </profile>
-  </profiles>
+    </build>
 </project>

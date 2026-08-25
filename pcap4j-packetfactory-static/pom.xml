@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.pcap4j</groupId>
         <artifactId>pcap4j</artifactId>
-        <version>1.8.3-SNAPSHOT</version>
+        <version>1.8.3-1</version>
     </parent>
 
     <dependencies>
@@ -88,51 +88,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>jre25-test</id>
-            <activation>
-                <property>
-                    <name>org.pcap4j.jre25-test.jvm</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>jre6-test</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>testCompile</goal>
-                                </goals>
-                                <configuration>
-                                    <release>${java.release}</release>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>jre25-test</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <jvm>${org.pcap4j.jre25-test.jvm}</jvm>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
